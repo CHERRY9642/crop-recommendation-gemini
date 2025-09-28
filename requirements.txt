@@ -1,0 +1,6 @@
+# If you plan to use the official Gemini SDK (recommended for production):
+google-genai>=0.3.0
+# For working with environment variables easily
+python-dotenv>=1.0.0
+Flask==2.3.2
+requests==2.31.0
