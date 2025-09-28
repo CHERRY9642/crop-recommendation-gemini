@@ -1,16 +1,12 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import requests
 import re
 
 app = Flask(__name__)
 
-API_KEY = "AIzaSyAH7aYrAZsTEf-XA9fz3crl0kRDl5hcmCQ"  # Replace with your real Gemini API key
+API_KEY = "AIzaSyAH7aYrAZsTEf-XA9fz3crl0kRDl5hcmCQ"  # Replace with your actual Gemini API key
 MODEL_NAME = "gemini-2.5-pro"
 ENDPOINT = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={API_KEY}"
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend():
@@ -75,4 +71,6 @@ Crop History: {data.get('cropHistory', '')}
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
